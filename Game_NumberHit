@@ -1,0 +1,76 @@
+import java.util.*;
+import java.util.Random;
+public class NumberGame2
+{
+public static void main(String[] args){
+Random rnd = new Random();
+int answer[] = new int[4];
+//Making answer number.
+for(int i = 0; i < answer.length; i++){
+Loop: while(true){
+answer[i] = rnd.nextInt(9);
+for(int j = 0; j < i; j++){
+if(answer[j] == answer[i]) continue Loop;
+}
+break;
+}
+}
+
+System.out.println("\r\nWelcome! Just starting NumberGame2.");
+System.out.println("You have 10 chance hitting answer number.");
+System.out.println("And Systeme tell you Hint about your selecting number.");
+
+//game start.
+for(int p=0;p<10;p++){
+System.out.println("\r\nPlease selecting 4 diffren Number (0~9).");
+System.out.println("For example 1 2 3 4");
+Scanner sc = new Scanner(System.in);
+int number[] = new int[4];
+for(int i = 0; i < number.length; i++){
+number[i] = sc.nextInt();
+}
+
+//selecting number end.
+int a=0;//A
+int b=0;//B
+
+//Check selecting number.
+//Winning case.
+int d=0;
+for(int i=0;i<4;i++){
+if(number[i] == answer[i]){
+d = d+1;
+}
+}
+if(d==4){
+System.out.println("4A");
+System.out.println("You are winner!");
+break;
+}
+
+//Hint case.
+else{
+for(int i=0;i<4;i++){
+if(number[i] == answer[i]){
+a = a + 1;
+}
+else if(number[i] != answer[i]){
+for(int j=0;j<4;j++){
+if(number[i]==answer[j]){
+b = b + 1;
+}
+}
+}
+
+}
+System.out.println(a +"A is.");
+System.out.println(b +"B is.");
+
+}
+
+} //game end.
+System.out.println("Actually answer is " + answer[0] + answer[1] + answer[2] + answer[3]);
+System.out.println("Today thank you for this game.");
+System.out.println("See you");
+}
+}
